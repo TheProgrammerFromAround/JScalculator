@@ -1,3 +1,3 @@
 function basic(){
-    document.getElementById("demo").innerHTML="tf?";
+    document.getElementById("accumulator").innerHTML="tf?";
 }
