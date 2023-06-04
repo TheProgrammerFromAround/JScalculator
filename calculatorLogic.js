@@ -1,32 +1,43 @@
-var gee = "";
 
-function clearButton() {
-    document.getElementById("accumulator").innerHTML = "";
-    gee = "";
+function appendValue(value) {
+    document.getElementById("accumulator").value += value;
+
+    if (value == '+' || value == '-' || value == '*' || value == '/') {
+        disabling();
+    } else {
+        enabling();
+    }
 }
 
-function numbers() {
-    //makes array with all buttons
-    var buttons = document.getElementsByClassName("button");
-    var operators = document.getElementsByClassName("operator");
+function disabling() {
+    document.getElementById("addition").disabled = true;
+    document.getElementById("subtract").disabled = true;
+    document.getElementById("multiply").disabled = true;
+    document.getElementById("division").disabled = true;
+}
 
-    //loops through 'buttons' array
-    for (var i = 0; i < buttons.length; i++) {
-        //checks which button clicked from array
-        buttons[i].addEventListener("click", function () {
-            //gets the text on button clicked
-            var buttonValue = this.innerHTML;
-            //adds to accumulator
-            document.getElementById("accumulator").innerHTML = buttonValue;
-        })
-    }
-    for (var i = 0; i < operators.length; i++) {
-        //checks which button clicked from array
-        operators[i].addEventListener("click", function () {
-            //gets the text on button clicked
-            var operatorValue = this.innerHTML;
-            //adds to accumulator
-            document.getElementById("accumulator").innerHTML = operatorValue;
-        })
-    }
+function enabling() {
+    document.getElementById("addition").disabled = false;
+    document.getElementById("subtract").disabled = false;
+    document.getElementById("multiply").disabled = false;
+    document.getElementById("division").disabled = false;
+}
+
+function clearButton() {
+    document.getElementById("accumulator").value = "";
+}
+
+function equals() {
+    /* var gee=document.getElementById("accumulator").value;
+     const points = new Array();
+ const sep = str.match(/[-+/*]?[\d]+/g);
+ points.push(sep);
+     document.getElementById("demo").value= points; 
+      */
+
+    // const arr = ["2", "+", "67", "-", "5"];
+    const arr = document.getElementById("accumulator").value;
+    sep = arr.match(/[+\-*/]|\d+/g);
+    const outputElement = document.getElementById("demo");
+    outputElement.textContent = sep.join(',');
 }

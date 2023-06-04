@@ -5,37 +5,37 @@
 </head>
 <body>
     <h1 style="text-align: center;">calculator</h1>
-    <textarea readonly id="accumulator">hoho</textarea>
+    <textarea readonly id="accumulator"></textarea>
    
     <br><br>
     
-    <button class="button" type="button" onclick="numbers()">7</button>
-    <button class="button" type="button" onclick="numbers()">8</button>
-    <button class="button" type="button" onclick="numbers()">9</button>
-    <button class="operator" type="button" onclick="numbers()">+</button>
+    <button class="button" type="button" onclick="appendValue('7')">7</button>
+    <button class="button" type="button" onclick="appendValue('8')">8</button>
+    <button class="button" type="button" onclick="appendValue('9')">9</button>
+    <button id="addition" class="button" type="button" onclick="appendValue('+')">+</button>
 
     <br><br>
 
-    <button class="button" type="button" onclick="numbers()">4</button>
-    <button class="button" type="button" onclick="numbers()">5</button>
-    <button class="button" type="button" onclick="numbers()">6</button>
-    <button class="operator" type="button" onclick="numbers()">-</button>
+    <button class="button" type="button" onclick="appendValue('4')">4</button>
+    <button class="button" type="button" onclick="appendValue('5')">5</button>
+    <button class="button" type="button" onclick="appendValue('6')">6</button>
+    <button id="subtract" class="button" type="button" onclick="appendValue('-')">-</button>
 
     <br><br>
 
-    <button class="button" type="button" onclick="numbers()">1</button>
-    <button class="button" type="button" onclick="numbers()">2</button>
-    <button class="button" type="button" onclick="numbers()">3</button>
-    <button class="operator" type="button" onclick="numbers()">*</button>
+    <button class="button" type="button" onclick="appendValue('1')">1</button>
+    <button class="button" type="button" onclick="appendValue('2')">2</button>
+    <button class="button" type="button" onclick="appendValue('3')">3</button>
+    <button id="multiply" class="button" type="button" onclick="appendValue('*')">*</button>
 
     <br><br>
 
-    <button class="button" type="button" onclick="numbers()">0</button>
-    <button id="buttonClear" type="button" onclick="clearButton()" >AC</button>
-    <button id="equals" type="button" onclick="numbers()">=</button>
-    <button class="operator" type="button" onclick="numbers()">/</button>
+    <button class="button" type="button" onclick="appendValue('0')">0</button>
+    <button id="buttonClear" type="button" onclick="clearButton()">AC</button>
+    <button id="equals" type="button" onclick="equals()">=</button>
+    <button id="division" class="button" type="button" onclick="appendValue('/')">/</button>
 
-
+<p id="demo">fin</p>
 
 </body>
 </html>
