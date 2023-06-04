@@ -28,16 +28,51 @@ function clearButton() {
 }
 
 function equals() {
-    /* var gee=document.getElementById("accumulator").value;
-     const points = new Array();
- const sep = str.match(/[-+/*]?[\d]+/g);
- points.push(sep);
-     document.getElementById("demo").value= points; 
-      */
+   
+    //getting text
+    gee = document.getElementById("accumulator").value;
+    //seperating text
+    numbers = gee.match(/[+\-*/]|\d+/g);
 
-    // const arr = ["2", "+", "67", "-", "5"];
-    const arr = document.getElementById("accumulator").value;
-    sep = arr.match(/[+\-*/]|\d+/g);
-    const outputElement = document.getElementById("demo");
-    outputElement.textContent = sep.join(',');
+    // document.getElementById("demo").textContent=numbers.join(',');
+    while(numbers.includes("*") || numbers.includes("/") || numbers.includes("+") || numbers.includes("-")){
+    for (var i = 0; i < numbers.length; i++) {
+
+        if (numbers[i].includes('*')) {
+            index = i
+            result = parseInt(numbers[index - 1]) * parseInt(numbers[index + 1]);
+            numbers.splice(index - 1, 3, parseInt(result));
+            
+            
+        }
+
+        if (numbers[i].includes('/')) {
+            index = i
+            result = parseInt(numbers[index - 1]) / parseInt(numbers[index + 1]);
+            numbers.splice(index - 1, 3, parseInt(result));
+           
+            
+        }
+
+        if (numbers[i].includes('+')) {
+            index = i
+            result = parseInt(numbers[index - 1]) + parseInt(numbers[index + 1]);
+            numbers.splice(index - 1, 3, parseInt(result));
+           
+            
+        }
+
+        if (numbers[i].includes('-')) {
+            index = i
+            result = parseInt(numbers[index - 1]) - parseInt(numbers[index + 1]);
+            numbers.splice(index - 1, 3, parseInt(result));
+         
+            
+        }
+      
+    }
+    document.getElementById("accumulator").value = numbers;
 }
+document.getElementById("demo").textContent = result;
+}//2+2*3-5 
+
