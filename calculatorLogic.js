@@ -28,51 +28,50 @@ function clearButton() {
 }
 
 function equals() {
-   
+    var result;
     //getting text
-    gee = document.getElementById("accumulator").value;
+    var gee = document.getElementById("accumulator").value;
     //seperating text
-    numbers = gee.match(/[+\-*/]|\d+/g);
+    var numbers = gee.match(/[+\-*/]|\d+/g);
 
-    // document.getElementById("demo").textContent=numbers.join(',');
-    while(numbers.includes("*") || numbers.includes("/") || numbers.includes("+") || numbers.includes("-")){
-    for (var i = 0; i < numbers.length; i++) {
-
-        if (numbers[i].includes('*')) {
-            index = i
-            result = parseInt(numbers[index - 1]) * parseInt(numbers[index + 1]);
-            numbers.splice(index - 1, 3, parseInt(result));
-            
-            
+    while (numbers.length > 1) {
+        var index = -1;
+        for (var i = 0; i < numbers.length; i ++) {
+            if (numbers[i] === "*") {
+                index = i;
+                var result = parseFloat(numbers[index - 1]) * parseFloat(numbers[index + 1]);
+                numbers.splice(index - 1, 3, result);
+            }
+        }
+        for (var i = 0; i < numbers.length; i ++) {
+             if (numbers[i] === "/") {
+                index = i;
+                var result = parseFloat(numbers[index - 1]) / parseFloat(numbers[index + 1]);
+                numbers.splice(index - 1, 3, result);
+            }
         }
 
-        if (numbers[i].includes('/')) {
-            index = i
-            result = parseInt(numbers[index - 1]) / parseInt(numbers[index + 1]);
-            numbers.splice(index - 1, 3, parseInt(result));
-           
-            
+        for (var i = 0; i < numbers.length; i ++) {
+             if (numbers[i] === "+") {
+                index = i;
+                var result = parseFloat(numbers[index - 1]) + parseFloat(numbers[index + 1]);
+                numbers.splice(index - 1, 3, result);
+            }
+
         }
 
-        if (numbers[i].includes('+')) {
-            index = i
-            result = parseInt(numbers[index - 1]) + parseInt(numbers[index + 1]);
-            numbers.splice(index - 1, 3, parseInt(result));
-           
-            
+        for (var i = 0; i < numbers.length; i ++) {
+             if (numbers[i] === "-") {
+                index = i;
+                var result = parseFloat(numbers[index - 1]) - parseFloat(numbers[index + 1]);
+                numbers.splice(index - 1, 3, result);
+            }
         }
-
-        if (numbers[i].includes('-')) {
-            index = i
-            result = parseInt(numbers[index - 1]) - parseInt(numbers[index + 1]);
-            numbers.splice(index - 1, 3, parseInt(result));
-         
-            
-        }
-      
     }
-    document.getElementById("accumulator").value = numbers;
-}
-document.getElementById("demo").textContent = result;
-}//2+2*3-5 
+    
+    var lastValue = numbers[0];
+    document.getElementById("accumulator").value = lastValue;
+    
+    }
+   
 
